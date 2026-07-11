@@ -2,18 +2,12 @@
 
 My personal portfolio site — a static, single-page site with a Three.js starfield background.
 
+**Live:** [whyburrito.github.io/Portfolio](https://whyburrito.github.io/Portfolio/)
+
 ## Stack
 
 - HTML / CSS / vanilla JavaScript
 - [Three.js](https://threejs.org/) (CDN) for the animated background
-
-## Run locally
-
-No build step. Open `index.html` in a browser, or serve the folder:
-
-```bash
-npx serve .
-```
 
 ## Structure
 
