@@ -1,0 +1,103 @@
+/* ============================================================
+   layout.css — section scaffolding, grids, containers
+   ============================================================ */
+
+.section {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: clamp(4rem, 10vh, 7rem) var(--gutter);
+}
+
+/* Hero fills the viewport */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  padding-top: 6rem;
+}
+
+.hero__content {
+  max-width: 780px;
+}
+
+/* About grid */
+.about__grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+.about__bio,
+.about__setup {
+  padding: 2rem;
+}
+
+.about__bio p + p {
+  margin-top: 1rem;
+}
+
+/* Projects grid */
+.projects__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.projects__all {
+  text-align: center;
+  margin-top: 2.5rem;
+}
+
+/* Skills groups */
+.skills__groups {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.skill-group {
+  padding: 1.75rem;
+}
+
+/* Awards grid */
+.awards__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+/* Contact */
+.contact {
+  padding: 2.5rem;
+  text-align: center;
+}
+
+.footer {
+  text-align: center;
+  padding: 2.5rem var(--gutter);
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  border-top: 1px solid rgba(196, 165, 116, 0.14);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .about__grid,
+  .projects__grid,
+  .skills__groups,
+  .awards__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .section {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}

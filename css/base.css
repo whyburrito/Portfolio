@@ -1,0 +1,122 @@
+/* ============================================================
+   base.css — reset, design tokens, and typography
+   ============================================================ */
+
+:root {
+  /* Core palette — matte midnight navy */
+  --color-bg: #07090f;
+  --color-bg-2: #0c1018;
+  --color-surface: rgba(14, 18, 28, 0.78);
+  --color-surface-solid: #0e121c;
+  --color-purple-deep: #0c1018;
+  --color-purple: #1a2233;
+
+  /* Champagne / antique brass accents */
+  --color-gold: #c4a574;
+  --color-gold-light: #d8c09a;
+  --color-gold-soft: rgba(196, 165, 116, 0.12);
+
+  /* Text */
+  --color-text: #ece8e0;
+  --color-text-muted: #a8a4b0;
+
+  /* Metallic trim */
+  --glass-border: rgba(196, 165, 116, 0.28);
+  --glass-blur: 14px;
+
+  /* Layout */
+  --maxw: 1120px;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --radius: 12px;
+  --radius-lg: 16px;
+
+  /* Motion */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Type — Manrope: geometric, medium optical weight */
+  --font-display: "Manrope", system-ui, sans-serif;
+  --font-body: "Manrope", system-ui, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.7;
+  font-size: 1.0625rem;
+  font-weight: 400;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Layered matte midnight backdrop behind the canvas */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(1100px 700px at 70% -5%, rgba(26, 34, 51, 0.55), transparent 60%),
+    radial-gradient(800px 600px at 15% 100%, rgba(12, 16, 24, 0.95), transparent 55%),
+    linear-gradient(180deg, #07090f 0%, #0a0e16 50%, #06080d 100%);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+
+strong {
+  color: var(--color-gold-light);
+  font-weight: 600;
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-bg);
+}
+
+/* Accessible focus ring */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-gold-light);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
