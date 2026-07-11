@@ -1,6 +1,6 @@
 # Portfolio
 
-Personal portfolio site for [Sean Audric Salvador](https://github.com/seansalvador) — a static, single-page site with a Three.js starfield background.
+My personal portfolio site — a static, single-page site with a Three.js starfield background.
 
 ## Stack
 
