@@ -16,6 +16,16 @@
   <link rel="stylesheet" href="css/layout.css" />
   <link rel="stylesheet" href="css/components.css" />
   <link rel="stylesheet" href="css/animations.css" />
+
+  <!-- Start fetching the starfield engine as early as possible -->
+  <link rel="modulepreload" href="js/vendor/three.module.min.js" />
+
+  <!-- No-JS fallback: ensure reveal content is visible without JavaScript -->
+  <noscript>
+    <style>
+      .reveal { opacity: 1; transform: none; }
+    </style>
+  </noscript>
 </head>
 <body>
   <!-- Three.js starfield canvas -->
@@ -235,11 +245,11 @@
     <p><span class="footer__star">&#10022;</span> Built by Sean Salvador &middot; Quezon City</p>
   </footer>
 
-  <!-- Three.js via CDN import map (static, no build step) -->
+  <!-- Three.js via self-hosted import map (static, no build step) -->
   <script type="importmap">
     {
       "imports": {
-        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"
+        "three": "./js/vendor/three.module.min.js"
       }
     }
   </script>
