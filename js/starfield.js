@@ -21,13 +21,20 @@ const camera = new THREE.PerspectiveCamera(
 camera.position.z = 380;
 camera.lookAt(0, 0, 0);
 
-const renderer = new THREE.WebGLRenderer({
-  canvas,
-  alpha: true,
-  antialias: true,
-});
-renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+let renderer;
+try {
+  renderer = new THREE.WebGLRenderer({
+    canvas,
+    alpha: true,
+    antialias: true,
+  });
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+} catch (err) {
+  // WebGL blocked or unsupported: keep the CSS gradient backdrop and bail out cleanly.
+  console.warn("Starfield background disabled — WebGL is unavailable.", err);
+  if (canvas) canvas.style.display = "none";
+}
 
 /* ---------- Soft sparkle texture (circular glow + cross) ---------- */
 function createSparkleTexture() {
@@ -241,10 +248,11 @@ function animate() {
 
   renderer.render(scene, camera);
 }
-animate();
+if (renderer) animate();
 
 /* ---------- Resize ---------- */
 window.addEventListener("resize", () => {
+  if (!renderer) return;
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
